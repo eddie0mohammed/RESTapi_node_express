@@ -6,11 +6,12 @@ const mongoose = require('mongoose');
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+const userRoutes = require('./api/routes/users');
 
 // database connection
 mongoose.connect(
     'mongodb+srv://mo:MeP9mky5awOlfjAX@api1-5dvdi.mongodb.net/test?retryWrites=true&w=majority',
-    { useNewUrlParser: true, useUnifiedTopology: true  } 
+    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, } 
 )
 
 const app = express();
@@ -44,6 +45,7 @@ app.use((req, res, next) => {
 //Routes
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
+app.use('/users', userRoutes);
 
 
 
